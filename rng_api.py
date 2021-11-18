@@ -13,7 +13,12 @@ class RandomAPI:
 
         params = f'?num=4&min=0&max={self.limit}&col=4&base=10&format=plain&rnd=new'
 
-        response = requests.get(self.url+params)
+        try:
+            response = requests.get(self.url+params)
+
+        except requests.exceptions.RequestException as e:               
+            print(e)
+
         return response.text.replace(" ", "").replace("\t", "").strip()
 
 x = RandomAPI(7).get_mastermind_code()
