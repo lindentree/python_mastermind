@@ -3,8 +3,8 @@ from rng_api import RandomAPI
 
 class TestRandomAPI:
 
-    rc = RandomAPI(7)
+    rc = RandomAPI()
 
     def test_get_mastermind_code_length(self):
-        rc = RandomAPI(7)
-        assert len(rc.get_mastermind_code()) == 4
+        rc = RandomAPI()
+        assert len(rc.get_mastermind_code(7)) == 4
