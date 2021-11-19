@@ -1,6 +1,7 @@
 import os
 
 from rng_api import RandomAPI
+from game import Game
 
 def clear():
     os.system("clear")
@@ -8,6 +9,7 @@ def clear():
 
 def game_loop():
     code = RandomAPI().get_mastermind_code(7)
+    active_game = Game(code)
     guesses = 5
 
     turn = 0
@@ -36,11 +38,12 @@ def game_loop():
             break
         else:
             #clear()
-            print("Sorry, try again")
+            feedback = active_game.provide__guess_feedback(guess)
+            print(f"Sorry, try again. Here's a hint: {feedback}")
             turn += 1
             continue
-    
-    print(f'The code was {code}')
+
+    print(f"The code was {code}")
 
 if __name__ == '__main__':
     while True:
@@ -51,9 +54,3 @@ if __name__ == '__main__':
             break
         elif restart == 'Y':
             continue
-
-
-
-
-
-        
