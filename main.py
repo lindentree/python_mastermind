@@ -5,9 +5,10 @@ from rng_api import RandomAPI
 def clear():
     os.system("clear")
 
-if __name__ == '__main__':
+
+def game_loop():
     code = RandomAPI().get_mastermind_code(7)
-    guesses = 10
+    guesses = 5
 
     turn = 0
 
@@ -22,7 +23,7 @@ if __name__ == '__main__':
             print("\tWrong choice!! Try again!!")
             continue
 
-        if len(guess) != 4:
+        if len(guess) != 4 or not guess.isnumeric():
             clear()
             print(guess)
             print(len(guess))
@@ -38,5 +39,21 @@ if __name__ == '__main__':
             print("Sorry, try again")
             turn += 1
             continue
+    
+    print(f'The code was {code}')
+
+if __name__ == '__main__':
+    while True:
+        game_loop()
+        restart = input('Do you want to try again, Y/N? ')
+
+        if restart == 'N':
+            break
+        elif restart == 'Y':
+            continue
+
+
+
+
 
         

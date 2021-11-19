@@ -2,8 +2,7 @@ import requests
 
 class RandomAPI:
 
-    def __init__(self):
-	    self.url = 'https://www.random.org/integers/'
+    url = 'https://www.random.org/integers/'
 
     def get_mastermind_code(self, limit):
         """Returns code from api"""

@@ -7,7 +7,7 @@ Game rules
 • A player will have 10 attempts to guess the number combinations
 • At the end of each guess, computer will provide one of the following response
 as feedback:
-• The player had guess a correct number
+• The player had guessed a correct number
 • The player had guessed a correct number and its correct location
 • The player’s guess was incorrect
 \*\*Note that the computer’s feedback should not reveal which number the player guessed correctly
