@@ -39,7 +39,7 @@ def game_loop():
         else:
             #clear()
             feedback = active_game.provide__guess_feedback(guess)
-            print(f"Sorry, try again. Here's a hint: {feedback}")
+            print(f"Sorry, try again. You have {guesses} guesses remaining. Here's a hint: {feedback}")
             turn += 1
             continue
 
