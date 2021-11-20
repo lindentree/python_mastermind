@@ -12,13 +12,13 @@ class Game:
         for i in range(0, len(guess)):
             if guess[i] == code[i]:
                 code[i] = '-'
-                guess[i] = ''
+                guess[i] = '*'
                 feedback += "C"
 
         for i in range(0, len(guess)):
             if guess[i] in code:
                 pos = code.index(guess[i])
                 code[pos] = '-'
-                guess[i] = ''
+                guess[i] = '*'
                 feedback += "W"
         return feedback
