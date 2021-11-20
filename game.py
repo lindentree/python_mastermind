@@ -1,7 +1,7 @@
 class Game:
     def __init__(self, code):
         self.code = code
-        self.guesses = {}
+        self.guesses = []
 
     def provide__guess_feedback(self, guess):
         code = list(self.code)
@@ -24,5 +24,6 @@ class Game:
         return feedback
 
     def display_guess_history(self):
-        print(self.guesses)
+        for item in self.guesses:
+            print(item)
 

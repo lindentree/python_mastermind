@@ -10,7 +10,8 @@ def clear():
 def game_loop():
     code = RandomAPI().get_mastermind_code(7)
     active_game = Game(code)
-    guesses = 3
+    guesses = 5
+    limit = 7
 
     turn = 0
 
@@ -36,6 +37,10 @@ def game_loop():
             print("\t Invalid choice!! Try again!!")
             continue
 
+        if any(guess in x for x in active_game.guesses):
+            print("\t You already guessed that!")
+            continue
+
         if guess == code:
             clear()
             print("Congratulations!! YOU WIN!!!!")
@@ -43,7 +48,8 @@ def game_loop():
         else:
             #clear()
             feedback = active_game.provide__guess_feedback(guess)
-            active_game.guesses[guess] = feedback
+            entry = { guess: feedback }
+            active_game.guesses.append(entry)
 
             if feedback:
                 print(f"Sorry, try again. You have {guesses} guesses remaining. Here's a hint: {feedback}")
