@@ -18,6 +18,9 @@ def game_loop():
         print("Guess the mastermind code")
 
         try:
+
+            if turn:
+                active_game.display_guess_history()
             print(f'You have {guesses-turn} guesses left.')    
             guess = input("Enter your choice: ")
             #print(guess)
@@ -40,6 +43,7 @@ def game_loop():
         else:
             #clear()
             feedback = active_game.provide__guess_feedback(guess)
+            active_game.guesses[guess] = feedback
 
             if feedback:
                 print(f"Sorry, try again. You have {guesses} guesses remaining. Here's a hint: {feedback}")

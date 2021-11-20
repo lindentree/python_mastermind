@@ -22,3 +22,7 @@ class Game:
                 guess[i] = '*'
                 feedback += "W"
         return feedback
+
+    def display_guess_history(self):
+        print(self.guesses)
+
