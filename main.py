@@ -1,15 +1,15 @@
 import os
 
 from rng_api import RandomAPI
-from game import Game
+from game_session import GameSession
 
 def clear():
-    os.system("clear")
+    os.system('cls' if os.name=='nt' else 'clear')
 
 
 def game_loop():
     code = RandomAPI().get_mastermind_code(7)
-    active_game = Game(code)
+    active_game = GameSession(code)
     guesses = 5
     limit = 7
 
@@ -32,8 +32,7 @@ def game_loop():
 
         if len(guess) != 4 or not guess.isnumeric():
             clear()
-            print(guess)
-            print(len(guess))
+           
             print("\t Invalid choice!! Try again!!")
             continue
 
@@ -46,16 +45,17 @@ def game_loop():
             print("Congratulations!! YOU WIN!!!!")
             break
         else:
-            #clear()
+            
             feedback = active_game.provide__guess_feedback(guess)
             entry = { guess: feedback }
             active_game.guesses.append(entry)
+            turn += 1
 
             if feedback:
-                print(f"Sorry, try again. You have {guesses} guesses remaining. Here's a hint: {feedback}")
+                print(f"Sorry, try again. You have {guesses-turn} guesses remaining. Here's a hint: {feedback}")
             else:
-                print(f"None of the numbers you guessed were correct or in the right place. You have {guesses} guesses remaining. ")
-            turn += 1
+                print(f"None of the numbers you guessed were correct or in the right place. You have {guesses-turn} guesses remaining. ")
+            
             continue
 
     print(f"The code was {code}")

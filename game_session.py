@@ -1,4 +1,4 @@
-class Game:
+class GameSession:
     def __init__(self, code):
         self.code = code
         self.guesses = []

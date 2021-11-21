@@ -29,13 +29,13 @@ as feedback:
 • The player’s guess was incorrect
 \*\*Note that the computer’s feedback should not reveal which number the player guessed correctly
 
-# Implementation Details
+## Implementation Details
 
 Uses the Random API to generate random combinations
 
 https://www.random.org/integers/?num=4&min=0&max=${limit}&col=4&base=10&format=plain&rnd=new
 
-# Extra Features
+## Extra Features
 
 Sample extension ideas include:
 • Add support to give hints []
