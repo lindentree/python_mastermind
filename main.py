@@ -1,4 +1,5 @@
 import os
+import click
 
 from rng_api import RandomAPI
 from game_session import GameSession
@@ -6,9 +7,35 @@ from game_session import GameSession
 def clear():
     os.system('cls' if os.name=='nt' else 'clear')
 
+difficulty_setting = {
+   "easy": {
+       "digits": 4,
+       "upper_limit": 5,
+       "guesses": 12
+
+   },
+   "normal": {
+       "digits": 4,
+       "upper_limit": 7,
+       "guesses": 10
+   },
+   "hard": {
+       "digits": 5,
+       "upper_limit": 9,
+       "guesses": 8
+   }
+}
+
+@click.command()
+@click.option('--difficulty', prompt=True, type=click.Choice(['MD5', 'SHA1'], case_sensitive=False))
+def set_difficulty(difficulty):
+    click.echo(f"You chose {difficulty}!")
+    #return difficulty
+
 
 def game_loop():
-    code = RandomAPI().get_mastermind_code(7)
+    print(difficulty_setting["normal"])
+    code = RandomAPI().get_mastermind_code(difficulty_setting["normal"])
     active_game = GameSession(code)
     guesses = 5
     limit = 7
@@ -17,14 +44,16 @@ def game_loop():
 
     while turn < guesses:
         print("Guess the mastermind code")
+        
 
         try:
 
             if turn:
                 active_game.display_guess_history()
-            print(f'You have {guesses-turn} guesses left.')    
+            print(f'You have {guesses-turn} guesses left.')  
+           
             guess = input("Enter your choice: ")
-            #print(guess)
+            
         except ValueError:
             clear()
             print("\tWrong choice!! Try again!!")
@@ -47,7 +76,7 @@ def game_loop():
         else:
             
             feedback = active_game.provide__guess_feedback(guess)
-            entry = { guess: feedback }
+            entry = (guess, feedback)  
             active_game.guesses.append(entry)
             turn += 1
 
@@ -58,11 +87,15 @@ def game_loop():
             
             continue
 
+    active_game.display_guess_history()
     print(f"The code was {code}")
 
 if __name__ == '__main__':
+    
+    user_choice = set_difficulty()
+
     while True:
-        game_loop()
+        game_loop(user_choice)
         restart = input('Do you want to try again, Y/N? ').lower()
 
         if restart == 'n':

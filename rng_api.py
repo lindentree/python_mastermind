@@ -4,10 +4,10 @@ class RandomAPI:
 
     url = 'https://www.random.org/integers/'
 
-    def get_mastermind_code(self, limit):
+    def get_mastermind_code(self, settings):
         """Returns code from api"""
 
-        params = f'?num=4&min=0&max={limit}&col=4&base=10&format=plain&rnd=new'
+        params = f'?num={settings["digits"]}&min=0&max={settings["upper_limit"]}&col=4&base=10&format=plain&rnd=new'
 
         try:
             response = requests.get(self.url+params)
