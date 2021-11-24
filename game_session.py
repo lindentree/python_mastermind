@@ -4,10 +4,10 @@ class GameSession:
         self.guesses = []
 
     def provide__guess_feedback(self, guess):
+
         code = list(self.code)
         guess = list(guess)
         feedback = ''
-
 
         for i in range(0, len(guess)):
             if guess[i] == code[i]:

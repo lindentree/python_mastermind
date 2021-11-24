@@ -9,7 +9,7 @@ from game_session import GameSession
 def clear():
     os.system('cls' if os.name=='nt' else 'clear')
 
-difficulty_setting = {
+difficulty_settings = {
    "Easy": {
        "digits": 4,
        "upper_limit": 5,
@@ -35,19 +35,22 @@ def set_difficulty(difficulty):
     return difficulty
 
 
-def game_loop(choice):
+def game_loop(choice: str):
 
-    code = RandomAPI().get_mastermind_code(difficulty_setting[choice])
+    settings = difficulty_settings[choice]
+
+    code = RandomAPI().get_mastermind_code(settings)
     active_game = GameSession(code)
-    guesses = difficulty_setting[choice]["guesses"]
-    limit = difficulty_setting[choice]["upper_limit"]
-
+ 
+    guesses = settings["guesses"]
+    limit = settings["upper_limit"]
+    digits = settings["digits"]
+   
     turn = 0
 
     while turn < guesses:
-        print("Guess the mastermind code")
+        print(f"Guess the Mastermind code. It is a randomly generated {digits}-digit code with each digit between 0 and {limit}")
         
-
         try:
 
             if turn:
@@ -61,23 +64,19 @@ def game_loop(choice):
             print("\tWrong choice!! Try again!!")
             continue
 
-        if len(guess) != 4 or not guess.isnumeric():
+        if not guess.isnumeric() or len(guess) != digits or any(int(x) > limit for x in guess):
             clear()
-           
-            print("\t Invalid choice!! Try again!!")
+            print(f"\tPlease enter a {digits}-digit numerical code with each digit in the range of 0-{limit}")
             continue
 
         if any(guess in x for x in active_game.guesses):
-            print("\t You already guessed that!")
-            continue
-
-        if any(int(x) > limit for x in guess):
-            print("\t You guessed a number/numbers out of the range!")
+            clear()
+            print("\tYou already guessed that!")
             continue
 
         if guess == code:
             clear()
-            print("Congratulations!! YOU WIN!!!!")
+            print("Congratulations! You solved it!")
             break
         else:
             
@@ -102,7 +101,10 @@ if __name__ == '__main__':
     obj.load_image_from_file("./images/logo.jpeg")                                                                                
     obj.resize(15,15)
     obj.render(timg.Ansi8HblockMethod)
+
     print("Welcome to Mastermind!")
+    print("Your mission is to guess the secret code!")
+    print("You get a hint after each guess: O means you got a number correct in the right spot, while X means you got a number correct in the wrong spot.")
     user_choice = set_difficulty(standalone_mode=False)
 
     while True:
@@ -111,7 +113,7 @@ if __name__ == '__main__':
         restart = input("Do you want to try again, Y/N? ").lower()
 
         if restart == 'n':
-            print(restart)
+            
             quit()
         elif restart == 'y':
             continue
