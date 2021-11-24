@@ -13,14 +13,14 @@ class GameSession:
             if guess[i] == code[i]:
                 code[i] = '-'
                 guess[i] = '*'
-                feedback += "C"
+                feedback += "O"
 
         for i in range(0, len(guess)):
             if guess[i] in code:
                 pos = code.index(guess[i])
                 code[pos] = '-'
                 guess[i] = '*'
-                feedback += "W"
+                feedback += "X"
         return feedback
 
     def display_guess_history(self):

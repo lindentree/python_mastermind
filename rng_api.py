@@ -4,8 +4,8 @@ class RandomAPI:
 
     url = 'https://www.random.org/integers/'
 
-    def get_mastermind_code(self, settings):
-        """Returns code from api"""
+    def get_mastermind_code(self, settings: dict) -> str:
+        """Returns code from external api"""
 
         params = f'?num={settings["digits"]}&min=0&max={settings["upper_limit"]}&col=4&base=10&format=plain&rnd=new'
 
