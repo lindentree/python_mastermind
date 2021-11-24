@@ -9,6 +9,7 @@ Git clone or download this repo to play the game. You need a Python installation
 After you cd into the repo folder, install all the relevant packages first.
 
 `pip install pipenv --user`
+
 `pipenv install`
 
 Then use `pipenv shell` to activate the virtual environment, and run `python main.py`
@@ -36,9 +37,7 @@ as feedback:
 
 ## Implementation Details
 
-Uses the Random API to generate random combinations
-
-https://www.random.org/integers/?num=4&min=0&max=${limit}&col=4&base=10&format=plain&rnd=new
+Uses the Random API(https://www.random.org/integers/?num=4&min=0&max=4&col=4&base=10&format=plain&rnd=new) to generate random number combinations
 
 ## Extra Features
 
