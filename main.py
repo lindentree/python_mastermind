@@ -1,5 +1,7 @@
 import os
 import click
+import timg
+
 
 from rng_api import RandomAPI
 from game_session import GameSession
@@ -8,18 +10,17 @@ def clear():
     os.system('cls' if os.name=='nt' else 'clear')
 
 difficulty_setting = {
-   "easy": {
+   "Easy": {
        "digits": 4,
        "upper_limit": 5,
        "guesses": 12
-
    },
-   "normal": {
+   "Normal": {
        "digits": 4,
        "upper_limit": 7,
        "guesses": 10
    },
-   "hard": {
+   "Hard": {
        "digits": 5,
        "upper_limit": 9,
        "guesses": 8
@@ -27,18 +28,18 @@ difficulty_setting = {
 }
 
 @click.command()
-@click.option('--difficulty', prompt=True, type=click.Choice(['MD5', 'SHA1'], case_sensitive=False))
+@click.option('--difficulty', prompt=True, type=click.Choice(['Easy', 'Normal', 'Hard'], case_sensitive=False))
+
 def set_difficulty(difficulty):
-    click.echo(f"You chose {difficulty}!")
-    #return difficulty
+    click.echo(f"You chose {difficulty} mode!")
+    return difficulty
 
 
-def game_loop():
-    print(difficulty_setting["normal"])
-    code = RandomAPI().get_mastermind_code(difficulty_setting["normal"])
+def game_loop(choice):
+
+    code = RandomAPI().get_mastermind_code(difficulty_setting[choice])
     active_game = GameSession(code)
-    guesses = 5
-    limit = 7
+    guesses = difficulty_setting[choice]["guesses"]
 
     turn = 0
 
@@ -92,11 +93,17 @@ def game_loop():
 
 if __name__ == '__main__':
     
-    user_choice = set_difficulty()
+    obj = timg.Renderer()                                                                                               
+    obj.load_image_from_file("./images/logo.jpeg")                                                                                
+    obj.resize(15,15)
+    obj.render(timg.Ansi8HblockMethod)
+    print("Welcome to Mastermind!")
+    user_choice = set_difficulty(standalone_mode=False)
 
     while True:
+
         game_loop(user_choice)
-        restart = input('Do you want to try again, Y/N? ').lower()
+        restart = input("Do you want to try again, Y/N? ").lower()
 
         if restart == 'n':
             print(restart)
