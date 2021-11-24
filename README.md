@@ -1,20 +1,24 @@
 # Mastermind Game
 
+This is a command-line implementation of the code-breaking game Mastermind(https://en.wikipedia.org/wiki/Mastermind_(board_game) where you play against the computer.
+
 ## Usage
 
-Git clone or download this repo to play the game.
-The game script(main.py) should work out of the box if you have Python installed on your machine. You can cd into the folder and run `python main.py`; however, you should use the pipenv package manager to install all the relevant packages first.
+Git clone or download this repo to play the game. You need a Python installation on your computer. \*Note: this was designed to run with Python 3.10.0, but Python 3.7 and up should be fine.
+
+After you cd into the repo folder, install all the relevant packages first.
 
 `pip install pipenv --user`
 `pipenv install`
 
-Then use `pipenv shell` to activate the virtual environment.
+Then use `pipenv shell` to activate the virtual environment, and run `python main.py`
 
-\*Note: this was designed to run with Python 3.10.0, but Python 3.7 and up should be fine.
+Alternatively, if Docker is available on your machine, you can use that to run the app.
+Use `docker build <image_name> .` to build the image, then `docker run -ti <image_name>`
 
 ## Development
 
-This project uses pytest for TDD; run `pytest tests` to see the current tests.
+This project uses pytest for TDD; run `pytest tests` to see the ouptut of the current unit tests.
 
 ## Acceptance Criteria
 
@@ -39,7 +43,7 @@ https://www.random.org/integers/?num=4&min=0&max=${limit}&col=4&base=10&format=p
 ## Extra Features
 
 Sample extension ideas include:
-• Add support to give hints []
+• Add support to give hints [-]
 • Add a configurable “difficulty level” and adjust the number of numbers that are used [x]
 • Draw all of graphical components, add animations and sounds []
 • Change numbers into colored pegs, shapes, animals, etc []

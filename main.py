@@ -55,28 +55,28 @@ def game_loop(choice: str):
 
             if turn:
                 active_game.display_guess_history()
-            print(f'You have {guesses-turn} guesses left.')  
+            print(f"You have {guesses-turn} guesses left.")  
            
             guess = input("Enter your choice: ")
             
         except ValueError:
             clear()
-            print("\tWrong choice!! Try again!!")
+            print("\tWrong choice! Try again!")
             continue
 
         if not guess.isnumeric() or len(guess) != digits or any(int(x) > limit for x in guess):
             clear()
-            print(f"\tPlease enter a {digits}-digit numerical code with each digit in the range of 0-{limit}")
+            print(f"Please enter a {digits}-digit numerical code with each digit in the range of 0-{limit}")
             continue
 
         if any(guess in x for x in active_game.guesses):
             clear()
-            print("\tYou already guessed that!")
+            print("You already guessed that!")
             continue
 
         if guess == code:
             clear()
-            print("Congratulations! You solved it!")
+            print(f"Congratulations! You solved it in {turn+1} guesses!")
             break
         else:
             
@@ -97,14 +97,16 @@ def game_loop(choice: str):
 
 if __name__ == '__main__':
     
-    obj = timg.Renderer()                                                                                               
+    obj = timg.Renderer()                                                                                           
     obj.load_image_from_file("./images/logo.jpeg")                                                                                
     obj.resize(15,15)
-    obj.render(timg.Ansi8HblockMethod)
+    obj.render(timg.Ansi8HblockMethod) #renders image in terminal, does not work in Windows shell
 
     print("Welcome to Mastermind!")
     print("Your mission is to guess the secret code!")
-    print("You get a hint after each guess: O means you got a number correct in the right spot, while X means you got a number correct in the wrong spot.")
+    print("You get a hint after each guess: an O means you got a number correct in the right spot, while X means you got a number correct in the wrong spot.")
+    print("The Os and Xs are not ordered, and duplicate numbers are not shown in feedback.")
+
     user_choice = set_difficulty(standalone_mode=False)
 
     while True:
