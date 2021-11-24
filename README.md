@@ -40,7 +40,7 @@ https://www.random.org/integers/?num=4&min=0&max=${limit}&col=4&base=10&format=p
 
 Sample extension ideas include:
 • Add support to give hints []
-• Add a configurable “difficulty level” and adjust the number of numbers that are used []
+• Add a configurable “difficulty level” and adjust the number of numbers that are used [x]
 • Draw all of graphical components, add animations and sounds []
 • Change numbers into colored pegs, shapes, animals, etc []
 • Keep track of scores(arcade style leaderboard) []
