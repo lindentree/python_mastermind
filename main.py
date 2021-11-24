@@ -40,6 +40,7 @@ def game_loop(choice):
     code = RandomAPI().get_mastermind_code(difficulty_setting[choice])
     active_game = GameSession(code)
     guesses = difficulty_setting[choice]["guesses"]
+    limit = difficulty_setting[choice]["upper_limit"]
 
     turn = 0
 
@@ -68,6 +69,10 @@ def game_loop(choice):
 
         if any(guess in x for x in active_game.guesses):
             print("\t You already guessed that!")
+            continue
+
+        if any(int(x) > limit for x in guess):
+            print("\t You guessed a number/numbers out of the range!")
             continue
 
         if guess == code:
