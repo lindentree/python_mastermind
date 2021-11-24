@@ -1,6 +1,6 @@
 from game_session import GameSession
 
-class TestGame:
+class TestGameSession:
 
     def test_correct_guess(self):
         g = GameSession('7789')
