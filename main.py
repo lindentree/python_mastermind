@@ -49,7 +49,7 @@ def game_loop(choice: str):
     turn = 0
 
     while turn < guesses:
-        print(f"Guess the Mastermind code. It is a randomly generated {digits}-digit code with each digit between 0 and {limit}")
+        print(f"Guess the Mastermind code. Choose {digits} digits between 0 and {limit} inclusive.")
         
         try:
 
@@ -66,7 +66,7 @@ def game_loop(choice: str):
 
         if not guess.isnumeric() or len(guess) != digits or any(int(x) > limit for x in guess):
             clear()
-            print(f"Please enter a {digits}-digit numerical code with each digit in the range of 0-{limit}")
+            print(f"Please choose NUMBERS between 0 and {limit} inclusive.")
             continue
 
         if any(guess in x for x in active_game.guesses):

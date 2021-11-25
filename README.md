@@ -42,6 +42,7 @@ Uses the Random API(https://www.random.org/integers/?num=4&min=0&max=4&col=4&bas
 ## Extra Features
 
 Sample extension ideas include:
+
 • Add support to give hints [-]
 
 • Add a configurable “difficulty level” and adjust the number of numbers that are used [x]
