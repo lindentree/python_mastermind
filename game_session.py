@@ -9,17 +9,17 @@ class GameSession:
         guess = list(guess)
         feedback = ''
 
-        for i in range(0, len(guess)):
-            if guess[i] == code[i]:
+        for i, val in enumerate(guess):
+            if val == code[i]:
                 code[i] = '-'
-                guess[i] = '*'
+                val = '*'
                 feedback += "O"
 
-        for i in range(0, len(guess)):
-            if guess[i] in code:
-                pos = code.index(guess[i])
+        for i, val in enumerate(guess):
+            if val in code:
+                pos = code.index(val)
                 code[pos] = '-'
-                guess[i] = '*'
+                val = '*'
                 feedback += "X"
         return feedback
 

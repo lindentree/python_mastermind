@@ -43,9 +43,15 @@ Uses the Random API(https://www.random.org/integers/?num=4&min=0&max=4&col=4&bas
 
 Sample extension ideas include:
 • Add support to give hints [-]
+
 • Add a configurable “difficulty level” and adjust the number of numbers that are used [x]
+
 • Draw all of graphical components, add animations and sounds []
+
 • Change numbers into colored pegs, shapes, animals, etc []
+
 • Keep track of scores(arcade style leaderboard) []
+
 • Add a timer for the entire game, or each guess attempt []
-• Anything else that you come up with to make the game more fun/interesting!
+
+• Anything else that you come up with to make the game more fun/interesting! []
