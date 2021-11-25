@@ -12,4 +12,12 @@ class TestRandomAPI:
    }
         assert len(rc.get_mastermind_code(setting)) == 4
     
-   
+    def test_get_mastermind_longer_code_length(self):
+        rc = RandomAPI()
+        setting = {
+       "digits": 5,
+       "upper_limit": 5,
+       "guesses": 12
+   }
+        assert len(rc.get_mastermind_code(setting)) == 5
+    

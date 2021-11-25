@@ -2,7 +2,6 @@ import os
 import click
 import timg
 
-
 from rng_api import RandomAPI
 from game_session import GameSession
 
@@ -35,9 +34,11 @@ def set_difficulty(difficulty):
     return difficulty
 
 
-def game_loop(choice: str):
+def game_loop():
 
-    settings = difficulty_settings[choice]
+    user_choice = set_difficulty(standalone_mode=False)
+
+    settings = difficulty_settings[user_choice]
 
     code = RandomAPI().get_mastermind_code(settings)
     active_game = GameSession(code)
@@ -107,11 +108,9 @@ if __name__ == '__main__':
     print("You get a hint after each guess: an O means you got a number correct in the right spot, while X means you got a number correct in the wrong spot.")
     print("The Os and Xs are not ordered, and duplicate numbers are not shown in feedback.")
 
-    user_choice = set_difficulty(standalone_mode=False)
-
     while True:
 
-        game_loop(user_choice)
+        game_loop()
         restart = input("Do you want to try again, Y/N? ").lower()
 
         if restart == 'n':

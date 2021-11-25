@@ -15,17 +15,21 @@ After you cd into the repo folder, install all the relevant packages first.
 Then use `pipenv shell` to activate the virtual environment, and run `python main.py`
 
 Alternatively, if Docker is available on your machine, you can use that to run the app.
-Use `docker build <image_name> .` to build the image, then `docker run -ti <image_name>`
+Use `docker build <image_name> .` to build the image.
+
+Then `docker run -ti <image_name>`
 
 ## Development
 
 This project uses pytest for TDD; run `pytest tests` to see the ouptut of the current unit tests.
+Currently you have to manually rebuild the Docker image after making code changes.
 
 ## Acceptance Criteria
 
 Please implement a mastermind game, which can be played by a user "against" the computer. This is a game where a player tries to guess the number combinations. At the end of each attempt to guess the 4 number combinations, the computer will provide feedback whether the player had guessed a number correctly, or/and a number and digit correctly. A player must guess the right number combinations within 10 attempts to win the game.
 
-Game rules
+### Game rules
+
 • At the start of the game the computer will randomly select a pattern of four different numbers from a total of 8 different numbers.
 • A player will have 10 attempts to guess the number combinations
 • At the end of each guess, computer will provide one of the following response
@@ -37,7 +41,8 @@ as feedback:
 
 ## Implementation Details
 
-Uses the Random API(https://www.random.org/integers/?num=4&min=0&max=4&col=4&base=10&format=plain&rnd=new) to generate random number combinations
+Uses the Random API to generate random number combinations.
+Example format: https://www.random.org/integers/?num=4&min=0&max=4&col=4&base=10&format=plain&rnd=new
 
 ## Extra Features
 

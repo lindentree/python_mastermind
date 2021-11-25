@@ -11,8 +11,8 @@ class RandomAPI:
 
         """Returns formatted numeric string code from external api"""
 
-        params = f'?num={settings["digits"]}&min=0&max={settings["upper_limit"]}&col=4&base=10&format=plain&rnd=new'
-        
+        params = f'?num={settings["digits"]}&min=0&max={settings["upper_limit"]}&col={settings["digits"]}&base=10&format=plain&rnd=new'
+
         try:
             response = requests.get(self.url+params)
 
