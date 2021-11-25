@@ -15,9 +15,10 @@ After you cd into the repo folder, install all the relevant packages first.
 Then use `pipenv shell` to activate the virtual environment, and run `python main.py`
 
 Alternatively, if Docker is available on your machine, you can use that to run the app.
+
 Use `docker build <image_name> .` to build the image.
 
-Then `docker run -ti <image_name>`
+Then `docker run -it <image_name>` \*\*The it flag makes the container interactive.
 
 ## Development
 
