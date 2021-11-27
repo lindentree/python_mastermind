@@ -8,5 +8,6 @@ pytest = "*"
 requests = "*"
 click = "*"
 pillow = "*"
+timg = "*"
 
 [dev-packages]
