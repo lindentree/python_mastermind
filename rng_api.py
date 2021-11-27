@@ -26,7 +26,7 @@ class RandomAPI:
 
     def create_fallback_code(self, settings: dict) -> str:
 
-        """Generates a pseudorandom number if Random API fails or is not available"""
+        """Generates a pseudorandom numeric string if Random API fails or is not available"""
 
         digits = [str(x) for x in range(settings["upper_limit"] + 1)]
         passcode = ""

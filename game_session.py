@@ -3,7 +3,7 @@ class GameSession:
         self.code = code
         self.guesses = []
 
-    def provide__guess_feedback(self, guess):
+    def provide__guess_feedback(self, guess: str) -> str:
 
         code = list(self.code)
         guess = list(guess)

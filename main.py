@@ -114,7 +114,6 @@ if __name__ == '__main__':
         restart = input("Do you want to try again, Y/N? ").lower()
 
         if restart == 'n':
-            
             quit()
         elif restart == 'y':
             continue
