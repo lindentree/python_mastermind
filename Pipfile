@@ -7,6 +7,10 @@ name = "pypi"
 pytest = "*"
 requests = "*"
 click = "*"
+<<<<<<< HEAD
 pillow = "*"
+=======
+timg = "*"
+>>>>>>> main
 
 [dev-packages]
