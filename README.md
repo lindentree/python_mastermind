@@ -16,7 +16,7 @@ Then use `pipenv shell` to activate the virtual environment, and run `python mai
 
 Alternatively, if Docker is available on your machine, you can use that to run the app.
 
-Use `docker build <image_name> .` to build the image.
+Use `docker build -t <image_name> .` to build the image.
 
 Then `docker run -it <image_name>` \*\*The it flag makes the container interactive.
 
