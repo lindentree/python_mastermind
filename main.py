@@ -42,24 +42,24 @@ def game_loop():
 
     code = RandomAPI().get_mastermind_code(settings)
     active_game = GameSession(code)
- 
+
     guesses = settings["guesses"]
     limit = settings["upper_limit"]
     digits = settings["digits"]
-   
+
     turn = 0
 
     while turn < guesses:
         print(f"Guess the Mastermind code. Choose {digits} digits between 0 and {limit} inclusive.")
-        
+
         try:
 
             if turn:
                 active_game.display_guess_history()
-            print(f"You have {guesses-turn} guesses left.")  
-           
+            print(f"You have {guesses-turn} guesses left.")
+
             guess = input("Enter your choice: ")
-            
+
         except ValueError:
             clear()
             print("\tWrong choice! Try again!")
@@ -79,10 +79,10 @@ def game_loop():
             clear()
             print(f"Congratulations! You solved it in {turn+1} guesses!")
             break
+
         else:
-            
             feedback = active_game.provide__guess_feedback(guess)
-            entry = (guess, feedback)  
+            entry = (guess, feedback)
             active_game.guesses.append(entry)
             turn += 1
 
@@ -90,16 +90,16 @@ def game_loop():
                 print(f"Sorry, try again. You have {guesses-turn} guesses remaining. Here's a hint: {feedback}")
             else:
                 print(f"None of the numbers you guessed were correct or in the right place. You have {guesses-turn} guesses remaining. ")
-            
+
             continue
 
     active_game.display_guess_history()
     print(f"The code was {code}")
 
 if __name__ == '__main__':
-    
-    obj = timg.Renderer()                                                                                           
-    obj.load_image_from_file("./images/logo.jpeg")                                                                                
+
+    obj = timg.Renderer()
+    obj.load_image_from_file("./images/logo.jpeg")
     obj.resize(15,15)
     obj.render(timg.Ansi8HblockMethod) #renders image in terminal, does not work in Windows shell
 
@@ -117,4 +117,3 @@ if __name__ == '__main__':
             quit()
         elif restart == 'y':
             continue
-        

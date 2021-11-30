@@ -18,7 +18,7 @@ class RandomAPI:
 
         except requests.exceptions.RequestException as e:
             print(e)
-            print("There was a problem with the external API!")
+            print("There was a problem with the external API, using fallback rng!")
 
             return self.create_fallback_code(settings)
 

@@ -18,4 +18,8 @@ class TestGame:
         g = GameSession('7789')
         assert g.provide__guess_feedback('9877') == 'XXXX'
 
+    def test_guess_feedback_dupes(self):
+        g = GameSession('3035')
+        assert g.provide__guess_feedback('3055') == 'OOO'
+
 
